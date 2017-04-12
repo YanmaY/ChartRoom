@@ -21,13 +21,13 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         .state('content.photos', {
-            url: '/photos',
+            url: 'photos',
             views: {
                 "body@content": { templateUrl: 'partials/photos.html' }
             }
         })
         .state('content.about', {
-            url: '/about',
+            url: 'about',
             views: {
                 "body@content": { templateUrl: 'partials/about.html' }
             }
