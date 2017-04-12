@@ -26,6 +26,18 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
                 "body@content": { templateUrl: 'partials/photos.html' }
             }
         })
+        .state('content.photos.list', {
+            url: '/list',
+            templateUrl: 'partials/photosList.html'
+        })
+        .state('content.photos.detail', {
+            url: '/detail',
+            templateUrl: 'partials/photosDetail.html'
+        })
+        .state('content.photos.detail.comment', {
+            url: '/comment',
+            templateUrl: 'partials/photosDetailComment.html'
+        })
         .state('content.about', {
             url: 'about',
             views: {
