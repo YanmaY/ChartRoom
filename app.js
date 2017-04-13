@@ -7,6 +7,7 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('content', {
             url: '/',
+            abstract: true,
             views: {
                 "": {
                     templateUrl: 'partials/content.html'
@@ -22,6 +23,7 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('content.photos', {
             url: 'photos',
+            abstract: true,
             views: {
                 "body@content": { templateUrl: 'partials/photos.html' }
             }
