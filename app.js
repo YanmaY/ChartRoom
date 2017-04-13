@@ -18,23 +18,35 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
         .state('content.home', {
             url: 'home',
             views: {
-                "body@content": { templateUrl: 'partials/home.html' }
+                "body@content": {
+                    templateUrl: 'partials/home.html',
+                    controller: 'HomeController',
+                    controllerAs: 'ctrlHome'
+                }
             }
         })
         .state('content.photos', {
             url: 'photos',
             abstract: true,
             views: {
-                "body@content": { templateUrl: 'partials/photos.html' }
+                "body@content": {
+                    templateUrl: 'partials/photos.html',
+                    controller: 'PhotosController',
+                    controllerAs: 'ctrlPhotos'
+                }
             }
         })
         .state('content.photos.list', {
             url: '/list',
-            templateUrl: 'partials/photosList.html'
+            templateUrl: 'partials/photosList.html',
+            controller: 'PhotosListController',
+            controllerAs: 'ctrlPhotosList'
         })
         .state('content.photos.detail', {
             url: '/detail',
-            templateUrl: 'partials/photosDetail.html'
+            templateUrl: 'partials/photosDetail.html',
+            controller: 'PhotosDetailController',
+            controllerAs: 'ctrlPhotosDetail'
         })
         .state('content.photos.detail.comment', {
             url: '/comment',

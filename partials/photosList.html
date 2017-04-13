@@ -1,5 +1,20 @@
 <h1>photos-list</h1>
-<ul>
-    <li><a ui-sref="^.detail">我通过相对路径到相邻的state</a></li>
-    <li><a ui-sref="content.photos.detail">我通过相对路径到相邻的state</a></li>
-</ul>
+<div ng-init="ctrlPhotosList.init()">
+    <div style="margin:auto; width: 40px;" ng-if="ctrlPhotosList.reading">
+        <i class="fa fa-spinner fa-5x fa-pulse"></i>
+    </div>
+
+    <div class="well well-sm" ng-repeat="photo in ctrlPhotosList.photos">
+        <div class="media">
+            <div class="media-left" style="width:15%;">
+                <a ui-sref="content.photos.detail">
+                    <img class="img-responsive img-rounded" src="../asserts/images/{{photo.imageName}}" alt="">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{photo.title}}</h4>
+                {{photo.description}}
+            </div>
+        </div>
+    </div>
+</div>
