@@ -146,5 +146,14 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
                 "body@content": { templateUrl: 'partials/pageNotFound.html' }
             }
         })
+        .state('content.log', {
+            url: 'log',
+            data: {
+                required: true
+            },
+            views: {
+                "body@content": { templateUrl: 'partials/log.html' }
+            }
+        })
 
 })

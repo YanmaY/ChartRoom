@@ -122,6 +122,8 @@ photoGallery.controller('PhotosCommentController', ['$scope', '$state', '$stateP
 
 photoGallery.controller('RootController', ['$scope', '$state', '$rootScope',
     function($scope, $state, $rootScope) {
+        $rootScope.accessLog = new Array();
+
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
                 if (toState.data.required && !$rootScope.user) {
@@ -134,6 +136,16 @@ photoGallery.controller('RootController', ['$scope', '$state', '$rootScope',
             function(event, unfoundState, fromState, fromParams) {
                 event.preventDefault();
                 $state.go('content.notfound');
+            });
+
+        $rootScope.$on('$stateChangeSuccess',
+            function(event, toState, toParams, fromState, fromParams) {
+                $rootScope.accessLog.push({
+                    user: $rootScope.user,
+                    from: fromState.name,
+                    to: toState.name,
+                    date: new Date()
+                });
             });
     }
 ]);

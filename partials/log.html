@@ -1,0 +1,8 @@
+<h1>
+    <i class="fa fa-file-text-o"></i> Access Log</h1>
+<div style="margin:auto; width: 380px;">
+    <div class="well well-sm" ng-repeat="log in accessLog track by $index">
+        <i class="fa fa-pencil fa-2x pull-left"></i> {{log.user ? log.user.name: 'anonymous'}} in {{log.date | date: 'longDate'}} at {{log.date | date: 'shortTime'}}
+        <p>From: {{log.from}} => to: {{log.to}}</p>
+    </div>
+</div>
