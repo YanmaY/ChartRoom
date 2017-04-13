@@ -155,5 +155,31 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
                 "body@content": { templateUrl: 'partials/log.html' }
             }
         })
-
+        .state('content.profile', {
+            url: 'profile',
+            data: {
+                required: true
+            },
+            resolve: {
+                showError: function() {
+                    throw 'Error in code.';
+                }
+            },
+            views: {
+                "body@content": { template: '<div>Error</div>' }
+            }
+        })
+        .state('content.error', {
+            url: 'error/:error',
+            views: {
+                "body@content": {
+                    templateUrl: 'partials/error.html',
+                    controller: function($scope, $stateParams) {
+                        $scope.error = {
+                            message: $stateParams.error
+                        }
+                    }
+                }
+            }
+        })
 })

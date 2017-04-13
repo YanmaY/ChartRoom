@@ -147,5 +147,11 @@ photoGallery.controller('RootController', ['$scope', '$state', '$rootScope',
                     date: new Date()
                 });
             });
+
+        $rootScope.$on('$stateChangeError',
+            function(event, toState, toParams, fromState, fromParams, error) {
+                event.preventDefault();
+                $state.go('content.error', { error: error });
+            });
     }
 ]);
