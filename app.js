@@ -8,12 +8,57 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
         .state('content', {
             url: '/',
             abstract: true,
+            data: {
+                user: "user",
+                password: "1234"
+            },
             views: {
-                "": {
-                    templateUrl: 'partials/content.html'
-                },
-                "header@content": { templateUrl: 'partials/header.html' }
+                "": { templateUrl: 'partials/content.html' },
+                "header@content": {
+                    templateUrl: 'partials/header.html',
+                    controller: function($scope, $rootScope, $state) {
+                        $scope.logoff = function() {
+                            $rootScope.user = null;
+                        }
+                    }
+                }
             }
+        })
+        .state('content.login', {
+            url: 'login',
+            data: {
+                loginError: 'User or password incorrect.'
+            },
+            views: {
+                "body@content": {
+                    templateUrl: 'partials/login.html',
+                    controller: function($scope, $rootScope, $state) {
+                        $scope.login = function(user, password, valid) {
+                            if (!valid) {
+                                return;
+                            }
+
+                            if ($state.current.data.user === user && $state.current.data.password === password) {
+                                $rootScope.user = {
+                                    name: $state.current.data.user
+                                }
+
+                                // Or Inherited
+
+                                /*$rootScope.user = {
+                                    name: $state.$current.parent.data.user
+                                };*/
+
+                                $state.go('content.home');
+                            } else {
+                                $scope.message = $state.current.data.loginError;
+                            }
+
+                        }
+                    }
+                }
+            }
+
         })
         .state('content.home', {
             url: 'home',

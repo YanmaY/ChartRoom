@@ -17,6 +17,17 @@
                     <a ui-sref="content.about">About</a>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="user.name" class="dropdown">
+                    <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">{{user.name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="content.home" ng-click="logoff()">Sing out</a></li>
+                    </ul>
+                </li>
+                <li ng-if="!user.name">
+                    <a ui-sref="content.login">Sing In</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

@@ -1,0 +1,19 @@
+<form name="form" ng-submit="login(user, password, form.$valid)">
+    <div class="panel panel-primary" style="width:360px; margin: auto;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Indentification</h3>
+        </div>
+        <div class="panel-body">
+            <input name="user" type="text" class="form-control" ng-model="user" placeholder="User ..." required>
+            <span ng-show="form.user.$error.required && form.user.$dirty" class="label label-danger">Enter the user</span>
+            <hr>
+            <input name="password" type="password" class="form-control" ng-model="password" placeholder="Password ..." required>
+            <span ng-show="form.password.$error.required && form.password.$dirty" class="label label-danger">Enter the password</span>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-default" type="submit">Login</button>
+            <button class="btn btn-default" type="reset">Reset</button>
+            <span class="label label-danger">{{message}}</span>
+        </div>
+    </div>
+</form>
