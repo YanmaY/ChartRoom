@@ -43,7 +43,7 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrlPhotosList'
         })
         .state('content.photos.detail', {
-            url: '/detail',
+            url: '/detail/:id',
             templateUrl: 'partials/photosDetail.html',
             controller: 'PhotosDetailController',
             controllerAs: 'ctrlPhotosDetail'

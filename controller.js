@@ -79,6 +79,12 @@ photoGallery.controller('PhotosListController', ['$scope', '$state', function($s
 
 
 //别名：ctrPhotoDetail
-photoGallery.controller('PhotosDetailController', ['$scope', '$state', function($scope, $state) {
+photoGallery.controller('PhotosDetailController', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
+    var id = null;
+    this.photo = null;
+    this.init = function() {
+        id = parseInt($stateParams.id);
+        this.photo = $scope.ctrlPhotos.photos[id];
 
+    }
 }]);

@@ -7,7 +7,7 @@
     <div class="well well-sm" ng-repeat="photo in ctrlPhotosList.photos">
         <div class="media">
             <div class="media-left" style="width:15%;">
-                <a ui-sref="content.photos.detail">
+                <a ui-sref="content.photos.detail({id:photo.id})">
                     <img class="img-responsive img-rounded" src="../asserts/images/{{photo.imageName}}" alt="">
                 </a>
             </div>
