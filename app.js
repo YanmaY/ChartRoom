@@ -13,7 +13,10 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
                 password: "1234"
             },
             views: {
-                "": { templateUrl: 'partials/content.html' },
+                "": {
+                    templateUrl: 'partials/content.html',
+                    controller: 'RootController'
+                },
                 "header@content": {
                     templateUrl: 'partials/header.html',
                     controller: function($scope, $rootScope, $state) {
@@ -92,6 +95,9 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/photosDetail.html',
             controller: 'PhotosDetailController',
             controllerAs: 'ctrlPhotosDetail',
+            data: {
+                required: true
+            },
             resolve: {
                 viewing: function($stateParams) {
                     return {
@@ -123,12 +129,21 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             url: '/comment?skip&limit',
             templateUrl: 'partials/photosDetailComment.html',
             controller: 'PhotosCommentController',
-            controllerAs: 'ctrlPhotosComment'
+            controllerAs: 'ctrlPhotosComment',
+            data: {
+                required: true
+            }
         })
         .state('content.about', {
             url: 'about',
             views: {
                 "body@content": { templateUrl: 'partials/about.html' }
+            }
+        })
+        .state('content.notfound', {
+            url: 'notfound',
+            views: {
+                "body@content": { templateUrl: 'partials/pageNotFound.html' }
             }
         })
 

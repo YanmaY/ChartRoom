@@ -118,3 +118,22 @@ photoGallery.controller('PhotosCommentController', ['$scope', '$state', '$stateP
         }
     }
 ]);
+
+
+photoGallery.controller('RootController', ['$scope', '$state', '$rootScope',
+    function($scope, $state, $rootScope) {
+        $rootScope.$on('$stateChangeStart',
+            function(event, toState, toParams, fromState, fromParams) {
+                if (toState.data.required && !$rootScope.user) {
+                    event.preventDefault();
+                    $state.go('content.login');
+                }
+            });
+
+        $rootScope.$on('$stateNotFound',
+            function(event, unfoundState, fromState, fromParams) {
+                event.preventDefault();
+                $state.go('content.notfound');
+            });
+    }
+]);
