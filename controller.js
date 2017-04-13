@@ -88,3 +88,32 @@ photoGallery.controller('PhotosDetailController', ['$scope', '$state', '$statePa
 
     }
 }]);
+
+
+photoGallery.controller('PhotosCommentController', ['$scope', '$state', '$stateParams',
+    function($scope, $state, $stateParams) {
+        var id, skip, limit = null;
+        this.comments = new Array();
+
+        this.init = function() {
+            id = parseInt($stateParams.id);
+            var photo = $scope.ctrlPhotos.photos[id];
+
+
+            if ($stateParams.skip) {
+                skip = parseInt($stateParams.skip);
+            } else {
+                skip = 0;
+            }
+
+            if ($stateParams.limit) {
+                limit = parseInt($stateParams.limit);
+            } else {
+                limit = photo.comments.length;
+            }
+
+            this.comments = photo.comments.slice(skip, limit);
+
+        }
+    }
+]);

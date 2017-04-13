@@ -49,8 +49,10 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrlPhotosDetail'
         })
         .state('content.photos.detail.comment', {
-            url: '/comment',
-            templateUrl: 'partials/photosDetailComment.html'
+            url: '/comment?skip&limit',
+            templateUrl: 'partials/photosDetailComment.html',
+            controller: 'PhotosCommentController',
+            controllerAs: 'ctrlPhotosComment'
         })
         .state('content.about', {
             url: 'about',
