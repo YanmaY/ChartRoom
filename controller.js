@@ -82,10 +82,11 @@ photoGallery.controller('PhotosListController', ['$scope', '$state', function($s
 photoGallery.controller('PhotosDetailController', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
     var id = null;
     this.photo = null;
+    this.viewObj = null
     this.init = function() {
         id = parseInt($stateParams.id);
         this.photo = $scope.ctrlPhotos.photos[id];
-
+        this.viewObj = JSON.parse(sessionStorage.getItem($stateParams.id));
     }
 }]);
 

@@ -6,6 +6,13 @@
 
 <div ng-init="ctrlPhotosDetail.init()">
     <img class="img-responsive img-rounded" ng-src="../asserts/images/{{ctrlPhotosDetail.photo.imageName}}" style="margin:auto; width: 60%;">
+    <div class="well well-sm pull-right" style="width: 100px;">
+        <i>Views <span class="badge">{{ctrlPhotosDetail.viewObj.views}}</span></i>
+    </div>
+    <div class="well well-sm pull-right" style="width: 110px;">
+        <i>Viewing <span class="badge">{{ctrlPhotosDetail.viewObj.viewing}}</span></i>
+    </div>
+
     <div class="well well-sm" style="margin:auto; width: 60%; margin-top: 15px;">
         <h4>{{ctrlPhotosDetail.photo.title}}</h4>
         <p>{{ctrlPhotosDetail.photo.description}}</p>

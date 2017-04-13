@@ -91,7 +91,33 @@ photoGallery.config(function($stateProvider, $urlRouterProvider) {
             url: '/detail/:id',
             templateUrl: 'partials/photosDetail.html',
             controller: 'PhotosDetailController',
-            controllerAs: 'ctrlPhotosDetail'
+            controllerAs: 'ctrlPhotosDetail',
+            resolve: {
+                viewing: function($stateParams) {
+                    return {
+                        photoId: $stateParams.id
+                    }
+                }
+            },
+            onEnter: function(viewing) {
+                var photo = JSON.parse(sessionStorage.getItem(viewing.photoId));
+                if (!photo)
+                    photo = {
+                        views: 1,
+                        viewing: 1
+                    }
+                else {
+                    photo.views += 1;
+                    photo.viewing += 1
+                }
+                sessionStorage.setItem(viewing.photoId, JSON.stringify(photo));
+            },
+            onExit: function(viewing) {
+                var photo = JSON.parse(sessionStorage.getItem(viewing.photoId));
+                photo.viewing -= 1;
+                sessionStorage.setItem(viewing.photoId, JSON.stringify(photo));
+            }
+
         })
         .state('content.photos.detail.comment', {
             url: '/comment?skip&limit',
